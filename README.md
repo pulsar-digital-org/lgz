@@ -272,7 +272,7 @@ npx tsx examples/demo.ts
 
 ## License
 
-ISC
+MIT
 
 ---
 
