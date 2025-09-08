@@ -28,8 +28,22 @@ export class LogManager {
     return LogManager.instance;
   }
 
+  // Configure retention settings
+  configure(options: Partial<LogManagerConfig>): void {
+    this.config = { ...this.config, ...options };
+  }
+
   registerLog(entry: LogEntry): void {
     this.logs.set(entry.id, entry);
+    
+    // If this entry has a parentId, add it to parent's children array
+    if (entry.parentId) {
+      const parent = this.logs.get(entry.parentId);
+      if (parent && !parent.children.includes(entry.id)) {
+        parent.children.push(entry.id);
+      }
+    }
+    
     this.startRendering();
     this.cleanupOldLogs();
   }
@@ -52,13 +66,15 @@ export class LogManager {
         entry.message = finalMessage;
       }
 
-      // Schedule removal after retention period
-      setTimeout(() => {
-        this.logs.delete(id);
-        if (this.logs.size === 0) {
-          this.stopRendering();
-        }
-      }, this.config.retentionTimeMs);
+      // Only schedule removal if retentionTimeMs is not 0 (0 means keep forever)
+      if (this.config.retentionTimeMs > 0) {
+        setTimeout(() => {
+          this.logs.delete(id);
+          if (this.logs.size === 0) {
+            this.stopRendering();
+          }
+        }, this.config.retentionTimeMs);
+      }
     }
   }
 

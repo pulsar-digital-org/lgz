@@ -121,6 +121,7 @@ export class FuturisticLogger implements IExpandableLogger {
       level: this.config.level,
       startTime: Date.now(),
       children: Array.from(this.children.keys()),
+      parentId: this.config.level > 0 ? this.getParentId() : undefined,
     };
 
     this.logManager.registerLog(entry);
@@ -170,6 +171,14 @@ export class FuturisticLogger implements IExpandableLogger {
         child.start();
       }
     });
+    
+    // Update children list in LogManager
+    if (this.isRunning) {
+      this.logManager.updateLog(this.config.id, {
+        children: Array.from(this.children.keys())
+      });
+    }
+    
     return this;
   }
 
@@ -205,13 +214,26 @@ export class FuturisticLogger implements IExpandableLogger {
       color,
       level: this.config.level + 1,
       updateInterval: this.config.updateInterval,
+      parentId: this.config.id,
     };
 
     const childAnimation = AnimationFactory.create(animation, color);
     const child = new FuturisticLogger(childConfig, childAnimation);
 
     this.children.set(childId, child);
+    
+    // Update parent's children list in LogManager if parent is already registered
+    if (this.isRunning) {
+      this.logManager.updateLog(this.config.id, {
+        children: Array.from(this.children.keys())
+      });
+    }
+    
     return child;
+  }
+
+  private getParentId(): string | undefined {
+    return this.config.parentId;
   }
 }
 

@@ -19,11 +19,8 @@
  * ```
  */
 
-import { Examples } from "./examples";
-
 export { LoggerFactory } from "./factory";
 export { LoggerBuilder } from "./builders";
+export { LogManager } from "./log-manager";
 export { Examples } from "./examples";
 export type { ILogger, IExpandableLogger, AnimationType } from "./interfaces";
-
-Examples.multiTaskDemo();

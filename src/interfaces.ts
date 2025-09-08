@@ -52,6 +52,7 @@ export interface LoggerConfig {
   readonly color: LoggerColor;
   readonly level: number;
   readonly updateInterval: number;
+  readonly parentId?: string;
 }
 
 export interface LogEntry {
