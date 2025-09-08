@@ -1,47 +1,55 @@
 {
-  "name": "lgz",
-  "version": "0.1.0",
-  "type": "module",
-  "description": "Professional Logger System with Background Table Storage & Clean Rendering",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "package.json"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsx src/index.ts",
-    "prepublishOnly": "npm run build"
-  },
-  "keywords": ["logger", "typescript", "typescript-logger", "cli", "console", "logging", "hierarchical-logger"],
-  "author": "Pulsar Digital s.r.o",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pulsar-digital-org/lgz.git"
-  },
-  "bugs": {
-    "url": "https://github.com/pulsar-digital-org/lgz/issues"
-  },
-  "homepage": "https://github.com/pulsar-digital-org/lgz#readme",
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "pnpm@10.11.0",
-  "dependencies": {
-    "ts-node": "^10.9.2",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
-  },
-  "devDependencies": {
-    "@types/node": "^24.0.2"
-  }
+	"name": "lgz",
+	"version": "0.1.0",
+	"type": "module",
+	"description": "Professional Logger System with Background Table Storage & Clean Rendering",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md",
+		"package.json"
+	],
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsx src/index.ts",
+		"lint": "pnpm exec biome lint",
+		"lint:fix": "pnpm exec biome format --write && pnpm exec biome check --fix",
+		"prepublishOnly": "npm run build"
+	},
+	"keywords": [
+		"logger",
+		"typescript",
+		"typescript-logger",
+		"cli",
+		"console",
+		"logging",
+		"hierarchical-logger"
+	],
+	"author": "Pulsar Digital s.r.o",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pulsar-digital-org/lgz.git"
+	},
+	"bugs": {
+		"url": "https://github.com/pulsar-digital-org/lgz/issues"
+	},
+	"homepage": "https://github.com/pulsar-digital-org/lgz#readme",
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"packageManager": "pnpm@10.11.0",
+	"devDependencies": {
+		"@biomejs/biome": "2.2.3",
+		"@types/node": "^24.0.2",
+		"tsx": "^4.20.3",
+		"typescript": "^5.8.3"
+	}
 }

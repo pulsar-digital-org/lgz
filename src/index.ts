@@ -19,8 +19,8 @@
  * ```
  */
 
-export { LoggerFactory } from "./factory";
 export { LoggerBuilder } from "./builders";
-export { LogManager } from "./log-manager";
 export { Examples } from "./examples";
-export type { ILogger, IExpandableLogger, AnimationType } from "./interfaces";
+export { LoggerFactory } from "./factory";
+export type { AnimationType, IExpandableLogger, ILogger } from "./interfaces";
+export { LogManager } from "./log-manager";
