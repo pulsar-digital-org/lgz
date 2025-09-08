@@ -134,7 +134,9 @@ export class FuturisticLogger implements IExpandableLogger {
 		this.isRunning = false;
 
 		// Stop all children
-		this.children.forEach((child) => child.stop());
+		for (const [, child] of this.children) {
+			child.stop();
+		}
 
 		this.logManager.unregisterLog(this.config.id, finalMessage);
 		return this;
@@ -184,7 +186,9 @@ export class FuturisticLogger implements IExpandableLogger {
 
 	collapse(): IExpandableLogger {
 		this.isExpanded = false;
-		this.children.forEach((child) => child.stop());
+		for (const [, child] of this.children) {
+			child.stop();
+		}
 		return this;
 	}
 
@@ -257,7 +261,7 @@ export class SubTaskBuilder implements ISubTaskBuilder {
 	}
 
 	build(): IExpandableLogger {
-		const child = (this.parent as any).createSubTask(
+		const child = (this.parent as IExpandableLogger).createSubTask(
 			this.message,
 			this.animation,
 			this.color,

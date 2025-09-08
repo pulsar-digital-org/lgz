@@ -19,6 +19,7 @@ export interface IExpandableLogger extends ILogger {
 	expand(): IExpandableLogger;
 	collapse(): IExpandableLogger;
 	toggle(): IExpandableLogger;
+	createSubTask(message: string, animation?: AnimationType, color?: string): IExpandableLogger;
 }
 
 export interface IAnimatable {

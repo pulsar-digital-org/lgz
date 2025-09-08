@@ -3,6 +3,7 @@
  */
 
 import { LoggerFactory } from "./factory";
+import type { IExpandableLogger } from "./interfaces";
 
 export const Examples = {
 	// Sequential dots animation demo
@@ -62,11 +63,11 @@ export const Examples = {
 			.addSubTask("Building application")
 			.withAnimation("sequential_dots")
 			.build();
-		const test = main
+		const _test = main
 			.addSubTask("Running tests")
 			.withAnimation("spinner")
 			.build();
-		const deploy = main
+		const _deploy = main
 			.addSubTask("Deploying servers")
 			.withAnimation("pulse_opacity")
 			.build();
@@ -79,8 +80,8 @@ export const Examples = {
 
 		setTimeout(() => {
 			main.showDetails(); // Only expands main task
-			(build as any).addDetail("Compiling TypeScript");
-			(build as any).showDetails(); // Only expands build task
+			(build as IExpandableLogger).addDetail("Compiling TypeScript");
+			(build as IExpandableLogger).showDetails(); // Only expands build task
 		}, 2000);
 
 		setTimeout(() => {

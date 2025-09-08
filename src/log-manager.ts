@@ -170,7 +170,7 @@ export class LogManager {
 		const expandIcon = hasDetails ? (entry.showingDetails ? "▼" : "▶") : "○";
 		const elapsed = this.getElapsedTime(entry);
 
-		const line = `${indent}${color}${expandIcon} [${entry.message}${frame ? " " + frame : ""}] ${status} ${elapsed}\x1b[0m`;
+		const line = `${indent}${color}${expandIcon} [${entry.message}${frame ? ` ${frame}` : ""}] ${status} ${elapsed}\x1b[0m`;
 		lines.push(line);
 
 		// Detail lines if expanded
@@ -234,7 +234,9 @@ export class LogManager {
 				.sort((a, b) => a.startTime - b.startTime)
 				.slice(0, activeLogs.length - this.config.maxActiveLogs);
 
-			excess.forEach((entry) => this.logs.delete(entry.id));
+			for (const entry of excess) {
+				this.logs.delete(entry.id);
+			}
 		}
 
 		// Remove excess completed logs (oldest first)
@@ -243,7 +245,9 @@ export class LogManager {
 				.sort((a, b) => (a.endTime || 0) - (b.endTime || 0))
 				.slice(0, completedLogs.length - this.config.maxCompletedLogs);
 
-			excess.forEach((entry) => this.logs.delete(entry.id));
+			for (const entry of excess) {
+				this.logs.delete(entry.id);
+			}
 		}
 	}
 
@@ -258,7 +262,7 @@ export class LogManager {
 
 		// Write new content
 		lines.forEach((line) => {
-			process.stdout.write(line + "\n");
+			process.stdout.write(`${line}\n`);
 		});
 
 		// Add instruction line
