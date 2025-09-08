@@ -2,7 +2,7 @@
 <div align="center">
 <h1>LGZ - Professional Logger System</h1>
 
-![LGZ Logger Banner](./assets/banner.png)
+<img src="./assets/banner.png" alt="LGZ Logger Banner" width="300">
 
 [![GitHub stars](https://img.shields.io/github/stars/pulsar-digital-org/lgz?style=social)](https://github.com/pulsar-digital-org/lgz/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/pulsar-digital-org/lgz?style=social)](https://github.com/pulsar-digital-org/lgz/network/members)
