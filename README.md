@@ -1,4 +1,17 @@
-# LGZ - Professional Logger System
+
+<div align="center">
+<h1>LGZ - Professional Logger System</h1>
+
+![LGZ Logger Banner](./assets/banner.png)
+
+[![GitHub stars](https://img.shields.io/github/stars/pulsar-digital-org/lgz?style=social)](https://github.com/pulsar-digital-org/lgz/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/pulsar-digital-org/lgz?style=social)](https://github.com/pulsar-digital-org/lgz/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/pulsar-digital-org/lgz)](https://github.com/pulsar-digital-org/lgz/issues)
+[![npm version](https://img.shields.io/npm/v/lgz)](https://www.npmjs.com/package/lgz)
+[![npm downloads](https://img.shields.io/npm/dm/lgz)](https://www.npmjs.com/package/lgz)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+</div>
 
 A TypeScript-based console logging system with hierarchical task management, smooth animations, and clean rendering.
 
