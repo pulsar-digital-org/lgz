@@ -1,6 +1,6 @@
 {
   "name": "lgz",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "Professional Logger System with Background Table Storage & Clean Rendering",
   "main": "dist/index.js",
@@ -21,8 +21,8 @@
     "dev": "tsx src/index.ts",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["logger", "typescript", "typescript-logger"],
+  "author": "Pulsar Digital s.r.o",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
