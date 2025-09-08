@@ -1,6 +1,6 @@
 {
 	"name": "lgz",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"type": "module",
 	"description": "Professional Logger System with Background Table Storage & Clean Rendering",
 	"main": "dist/index.js",
