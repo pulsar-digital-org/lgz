@@ -265,11 +265,6 @@ npm run build
 npx tsx examples/demo.ts
 ```
 
-## Requirements
-
-- Node.js (ES2020+ support)
-- TypeScript ^5.8.3 (for development)
-
 ## License
 
 MIT
