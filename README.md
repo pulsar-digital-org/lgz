@@ -256,10 +256,10 @@ type AnimationType =
 pnpm install
 
 # Development mode
-npm run dev
+pnpm dev
 
 # Build for production
-npm run build
+pnpm build
 
 # Run examples
 npx tsx examples/demo.ts
