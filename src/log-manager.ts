@@ -66,6 +66,16 @@ export class LogManager {
 				entry.message = finalMessage;
 			}
 
+			// Check if there are any running tasks left
+			const hasRunningTasks = Array.from(this.logs.values()).some(
+				log => log.status === "running"
+			);
+
+			// If no running tasks, stop rendering (but keep completed tasks visible)
+			if (!hasRunningTasks) {
+				this.stopRendering();
+			}
+
 			// Only schedule removal if retentionTimeMs is not 0 (0 means keep forever)
 			if (this.config.retentionTimeMs > 0) {
 				setTimeout(() => {
@@ -120,7 +130,35 @@ export class LogManager {
 			clearInterval(this.renderInterval);
 			this.renderInterval = null;
 		}
-		this.clearScreen();
+		
+		// If there are completed tasks to show, render the final state
+		// Otherwise, clear the screen
+		if (this.logs.size > 0) {
+			this.renderFinalState();
+		} else {
+			this.clearScreen();
+		}
+	}
+
+	private renderFinalState(): void {
+		// Clear previous lines if any exist
+		if (this.lastLineCount > 0) {
+			for (let i = 0; i < this.lastLineCount; i++) {
+				process.stdout.write("\x1b[1A\x1b[2K");
+			}
+		}
+
+		const lines = this.buildDisplayLines();
+		
+		// Write final content
+		lines.forEach((line) => {
+			process.stdout.write(`${line}\n`);
+		});
+
+		// Add final instruction line without the background tasks message
+		process.stdout.write("\x1b[90mAll tasks completed.\x1b[0m\n");
+		
+		this.lastLineCount = lines.length + 1;
 	}
 
 	private tick(): void {
